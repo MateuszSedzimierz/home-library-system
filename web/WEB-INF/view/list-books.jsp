@@ -7,42 +7,44 @@
 
     <head>
         <title>Home Library</title>
-        <meta charset="utf-8">
+
+        <!-- Adding style sheet -->
+        <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
     </head>
 
     <body>
 
-        <div id="wrapper">
-            <div id="header">
-                <h1>Simple Home Library System</h1>
-            </div>
-        </div>
-
         <div id="container">
-            <div id="content">
+
+            <h1>Simple Home Library System</h1>
 
                 <!-- HTML table -->
-                <table>
-                    <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Publisher</th>
-                        <th>Publication Year</th>
-                    </tr>
-
-                    <c:forEach var="tempBook" items="${books}">
-
+                <div id="header">
+                    <table cellspacing="0">
                         <tr>
-                            <td>${tempBook.title}</td>
-                            <td>${tempBook.author}</td>
-                            <td>${tempBook.publisher}</td>
-                            <td>${tempBook.publicationYear}</td>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Publisher</th>
+                            <th>Publication Year</th>
                         </tr>
+                    </table>
+                </div>
 
-                    </c:forEach>
-                </table>
+                <div id="content">
+                    <table cellspacing="0">
+                        <c:forEach var="tempBook" items="${books}">
 
-            </div>
+                            <tr>
+                                <td>${tempBook.title}</td>
+                                <td>${tempBook.author}</td>
+                                <td>${tempBook.publisher}</td>
+                                <td>${tempBook.publicationYear}</td>
+                            </tr>
+
+                        </c:forEach>
+                    </table>
+                </div>
+
         </div>
 
     </body>
