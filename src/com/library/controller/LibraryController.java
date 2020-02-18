@@ -1,11 +1,11 @@
 package com.library.controller;
 
-import com.library.dao.BookDAO;
 import com.library.entity.Book;
+import com.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -13,13 +13,13 @@ import java.util.List;
 public class LibraryController {
 
     @Autowired
-    private BookDAO bookDAO;
+    private BookService bookService;
 
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public String listBooks(Model model) {
 
-        // Get books from dao
-        List<Book> books = bookDAO.getBooks();
+        // Get books from service
+        List<Book> books = bookService.getBooks();
 
         // Add books to the model
         model.addAttribute("books", books);
