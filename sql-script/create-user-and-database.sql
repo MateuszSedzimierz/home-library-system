@@ -11,6 +11,8 @@ ALTER USER 'homelibrary'@'localhost' IDENTIFIED WITH mysql_native_password BY 'h
 CREATE DATABASE IF NOT EXISTS `home_library_system`;
 USE `home_library_system`;
 
+ALTER DATABASE home_library_system DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_polish_ci;
+
 DROP TABLE IF EXISTS book;
 
 CREATE TABLE book (
@@ -19,7 +21,7 @@ CREATE TABLE book (
 	author varchar(140),
 	publisher varchar(140),
 	publication_year varchar(4)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci; 
 
 SET NAMES 'utf8';
 

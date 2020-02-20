@@ -14,9 +14,13 @@
 
     <body>
 
-        <div id="container">
+    <div id="container">
 
-            <h1>Simple Home Library System</h1>
+                <h1>Simple Home Library System</h1>
+
+                <!--New button to add new book-->
+                <input type="button" value="Add Book" onclick="window.location.href='showFormForAdd'; return false;" class="add-button" />
+
 
                 <!-- HTML table -->
                 <div id="header">

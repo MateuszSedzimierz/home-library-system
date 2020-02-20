@@ -22,13 +22,23 @@ public class BookDAOImpl implements BookDAO {
         // Get current hibernate session
         Session session = sessionFactory.getCurrentSession();
 
-        // Create a query
-        Query<Book> query = session.createQuery("FROM Book", Book.class);
+        // Create a query and sorting by title
+        Query<Book> query = session.createQuery("FROM Book ORDER BY title", Book.class);
 
         // Execute query and get result list
         List<Book> books = query.getResultList();
 
         // Return results
         return books;
+    }
+
+    @Override
+    public void saveBook(Book book) {
+        Session session = sessionFactory.getCurrentSession();
+
+        System.out.println(book);
+
+        // Save the book
+        session.save(book);
     }
 }

@@ -31,7 +31,10 @@
     <bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
+
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/home_library_system?useSSL=false&amp;serverTimezone=UTC" />
+        <!--<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/home_library_system?useUnicode=true&amp;characterEncoding=utf8"/> -->
+
         <property name="user" value="homelibrary" />
         <property name="password" value="homelibrary" />
 
@@ -52,6 +55,7 @@
                 <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>
+
     </bean>
 
     <!-- Step 3: Setup Hibernate transaction manager -->
