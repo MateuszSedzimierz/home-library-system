@@ -63,4 +63,15 @@ public class LibraryController {
         bookService.deleteBook(id);
         return "redirect:/list";
     }
+
+    @GetMapping("/search")
+    public String searchBook(@RequestParam("theSearch") String theSearch, Model model) {
+        // Search book from the service
+        List<Book> books = bookService.searchBooks(theSearch);
+
+        // Add books to the model
+        model.addAttribute("books", books);
+
+        return "list-books";
+    }
 }

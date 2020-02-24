@@ -43,10 +43,7 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public Book getBook(int id) {
         Session session = sessionFactory.getCurrentSession();
-
         Book book = session.get(Book.class, id);
-
-        System.out.println(book);
 
         return book;
     }
@@ -59,5 +56,30 @@ public class BookDAOImpl implements BookDAO {
         Query query = session.createQuery("DELETE FROM Book WHERE id=:bookId");
         query.setParameter("bookId", id);
         query.executeUpdate();
+    }
+
+    @Override
+    public List<Book> searchBooks(String theSearch) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Query query = null;
+
+        // Search only if theSearch is not empty
+        if (theSearch != null && theSearch.trim().length() > 0) {
+
+            //Search for title, author, publisher or year
+            query = session.createQuery("FROM Book WHERE LOWER(title) LIKE :theSearch" +
+                    " OR LOWER(author) LIKE :theSearch " +
+                    "OR LOWER(publisher) LIKE :theSearch " +
+                    "OR publicationYear LIKE :theSearch", Book.class);
+            query.setParameter("theSearch", "%" + theSearch.toLowerCase() + "%");
+        } else {
+            // theSearch is empty so return all books
+            query = session.createQuery("FROM Book ORDER BY title", Book.class);
+        }
+
+        List<Book> books = query.getResultList();
+
+        return books;
     }
 }

@@ -1,5 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page contentType="text/html;charset=UTF-8" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE HTML>
 
@@ -18,9 +19,18 @@
 
                 <h1>Simple Home Library System</h1>
 
-                <!--New button to add new book-->
-                <input type="button" value="Add Book" onclick="window.location.href='showFormForAdd'; return false;" class="add-button" />
+                <div style="display: inline-block">
+                    <!--New button to add new book-->
+                    <input type="button" value="Add Book" onclick="window.location.href='showFormForAdd'; return false;" class="add-button" />
+                </div>
 
+                <div style="display: inline-block">
+                    <!-- Add search box -->
+                    <form:form action="search" method="get" >
+                        <input type="text" name="theSearch" placeholder="Type to search" id="searchBar"/>
+                        <input type="submit" value="Search" class="add-button" >
+                    </form:form>
+                </div>
 
                 <!-- HTML table -->
 

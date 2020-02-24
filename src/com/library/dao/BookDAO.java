@@ -9,4 +9,5 @@ public interface BookDAO {
     public void saveBook(Book book);
     public Book getBook(int id);
     public void deleteBook(int id);
+    public List<Book> searchBooks(String theSearch);
 }
