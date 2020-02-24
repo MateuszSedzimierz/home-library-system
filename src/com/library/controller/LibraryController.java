@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -42,10 +43,18 @@ public class LibraryController {
     @PostMapping("/saveBook")
     public String saveBook(@ModelAttribute("book") Book book) {
 
-        System.out.println("CONTROLLER -> " + book);
         // Save book using service
         bookService.saveBook(book);
 
         return "redirect:/list";
+    }
+
+    @GetMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("bookId") int id, Model model) {
+        Book book = bookService.getBook(id);
+
+        model.addAttribute("book", book);
+
+        return "book-form";
     }
 }

@@ -1,5 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html;charset=UTF-8" %>
 
 <!DOCTYPE HTML>
 
@@ -23,26 +23,33 @@
 
 
                 <!-- HTML table -->
-                <div id="header">
+
+                <div id="content">
                     <table cellspacing="0">
+
                         <tr>
                             <th>Title</th>
                             <th>Author</th>
                             <th>Publisher</th>
                             <th>Publication Year</th>
+                            <th>Action</th>
                         </tr>
-                    </table>
-                </div>
 
-                <div id="content">
-                    <table cellspacing="0">
                         <c:forEach var="tempBook" items="${books}">
+
+                            <!-- Update link with book id -->
+                            <c:url var="updateLink" value="/showFormForUpdate" >
+                                <c:param name="bookId" value="${tempBook.id}" />
+                            </c:url>
 
                             <tr>
                                 <td>${tempBook.title}</td>
                                 <td>${tempBook.author}</td>
                                 <td>${tempBook.publisher}</td>
                                 <td>${tempBook.publicationYear}</td>
+
+                                <!-- Display update link -->
+                                <td><a href="${updateLink}">Update</a> </td>
                             </tr>
 
                         </c:forEach>

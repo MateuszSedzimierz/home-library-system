@@ -27,4 +27,10 @@ public class BookServiceImpl implements BookService {
     public void saveBook(Book book) {
         bookDAO.saveBook(book);
     }
+
+    @Override
+    @Transactional
+    public Book getBook(int id) {
+        return bookDAO.getBook(id);
+    }
 }

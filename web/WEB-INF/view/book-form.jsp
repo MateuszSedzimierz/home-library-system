@@ -1,14 +1,12 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@page contentType="text/html;encoding=UTF-8" %>
+<%@page contentType="text/html;charset=UTF-8"  %>
 
 <!DOCTYPE HTML>
 
 <html>
 
     <head>
-
         <title>Save Book</title>
-
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/save-book-style.css">
     </head>
@@ -21,7 +19,9 @@
 
         <div id="content">
 
-            <form:form action="saveBook" modelAttribute="book" method="post">
+            <form:form action="saveBook" modelAttribute="book" method="post" >
+
+                <form:hidden path="id" />
 
                 <table>
 
@@ -32,7 +32,7 @@
 
                     <tr>
                         <td><label>Title:</label></td>
-                        <td><form:input path="title" /></td>
+                        <td><form:input path="title"/></td>
                     </tr>
 
                     <tr>
