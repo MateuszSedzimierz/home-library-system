@@ -33,4 +33,10 @@ public class BookServiceImpl implements BookService {
     public Book getBook(int id) {
         return bookDAO.getBook(id);
     }
+
+    @Override
+    @Transactional
+    public void deleteBook(int id) {
+        bookDAO.deleteBook(id);
+    }
 }

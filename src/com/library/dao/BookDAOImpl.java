@@ -50,4 +50,14 @@ public class BookDAOImpl implements BookDAO {
 
         return book;
     }
+
+    @Override
+    public void deleteBook(int id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        // Delete object with primary key
+        Query query = session.createQuery("DELETE FROM Book WHERE id=:bookId");
+        query.setParameter("bookId", id);
+        query.executeUpdate();
+    }
 }

@@ -42,14 +42,27 @@
                                 <c:param name="bookId" value="${tempBook.id}" />
                             </c:url>
 
+                            <!-- Delete link with book id -->
+                            <c:url var="deleteLink" value="/delete">
+                                <c:param name="bookId" value="${tempBook.id}" />
+                            </c:url>
+
                             <tr>
                                 <td>${tempBook.title}</td>
                                 <td>${tempBook.author}</td>
                                 <td>${tempBook.publisher}</td>
                                 <td>${tempBook.publicationYear}</td>
 
-                                <!-- Display update link -->
-                                <td><a href="${updateLink}">Update</a> </td>
+                                <!-- Display update and delete link -->
+                                <td>
+                                    <a href="${updateLink}">Update</a>
+                                    |
+                                    <a href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete this book ?'))) return false">
+                                        Delete
+                                    </a>
+                                </td>
+
+
                             </tr>
 
                         </c:forEach>

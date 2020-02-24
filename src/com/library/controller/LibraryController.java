@@ -57,4 +57,10 @@ public class LibraryController {
 
         return "book-form";
     }
+
+    @GetMapping("/delete")
+    public String deleteBook(@RequestParam("bookId") int id) {
+        bookService.deleteBook(id);
+        return "redirect:/list";
+    }
 }
